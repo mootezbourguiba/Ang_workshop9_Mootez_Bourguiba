@@ -1,0 +1,15 @@
+<div class="container">
+  <div class="row">
+    <ng-container *ngFor="let product of listProducts">
+      <div class="col-md-4" *ngIf="product.categoryId === categoryId">
+        <img [src]="product.image" alt="{{product.name}}" class="img-fluid">
+        <h3>{{ product.name }}</h3>
+        <p>{{ product.description }}</p>
+        <p>Prix : {{ product.price }} TND</p>
+        <p>Marque : {{ product.brand }}</p>
+        <p *ngIf="product.promotion > 0">Promotion : {{ product.promotion }}%</p>
+      </div>
+    </ng-container>
+  </div>
+  <router-outlet></router-outlet>
+</div>

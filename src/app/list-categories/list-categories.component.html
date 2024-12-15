@@ -1,0 +1,12 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-4" *ngFor="let category of categories" style="margin-bottom: 20px;" appHighlight>
+      <img [src]="category.image" [alt]="category.title" class="img-fluid h-50 w-75" (click)="showDescription(category.description)">
+      <h3>{{ category.title | uppercase }}</h3>
+      <button *ngIf="category.available" class="btn btn-primary" [routerLink]="['/products-category', category.id]">Voir produits</button>
+      <button *ngIf="category.available" class="btn btn-secondary" [routerLink]="['/products-category', category.id, 'details']">Voir détails</button>
+      <p *ngIf="!category.available">Catégorie non disponible</p>
+      <p>{{ category.description }}</p>
+    </div>
+  </div>
+</div>
