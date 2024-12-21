@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import { enableProdMode } from '@angular/core';
 import { environment } from './environments/environments';
 import { AppComponent } from './app/app.component';
@@ -21,3 +22,6 @@ if (environment.production) {
 export class AppServerModule {}
 
 export default AppServerModule;
+=======
+export { AppServerModule as default } from './app/app.module.server';
+>>>>>>> 407d56a5de5f48c4e8f1f3290d9b3f8795e1e259
