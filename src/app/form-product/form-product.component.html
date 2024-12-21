@@ -1,42 +1,50 @@
-<form #productForm="ngForm" (ngSubmit)="onSubmit(productForm)" novalidate>
-  <!-- Champ Name avec validations -->
+<form [formGroup]="productForm" (ngSubmit)="onSubmit()">
   <div>
     <label for="name">Name:</label>
-    <input type="text" id="name" name="name" ngModel required minlength="5" pattern="[a-zA-Z]*">
-    <div *ngIf="productForm.submitted && productForm.controls['name']?.invalid">
-      <span *ngIf="productForm.controls['name']?.errors?.['required']">Name is required.</span>
-      <span *ngIf="productForm.controls['name']?.errors?.['minlength']">Name must be at least 5 characters long.</span>
-      <span *ngIf="productForm.controls['name']?.errors?.['pattern']">Name can only contain letters.</span>
+    <input id="name" formControlName="name">
+    <div *ngIf="productForm.get('name')?.invalid && (productForm.get('name')?.dirty || productForm.get('name')?.touched)">
+      <span *ngIf="productForm.get('name')?.errors?.['required']">Name is required.</span>
+      <span *ngIf="productForm.get('name')?.errors?.['minlength']">Name must be at least 5 characters long.</span>
+      <span *ngIf="productForm.get('name')?.errors?.['pattern']">Name can only contain letters.</span>
     </div>
   </div>
 
-  <!-- Champ Category ID avec validation -->
   <div>
     <label for="categoryId">Category ID:</label>
-    <input type="number" id="categoryId" name="categoryId" ngModel required>
-    <div *ngIf="productForm.submitted && productForm.controls['categoryId']?.invalid">
-      <span *ngIf="productForm.controls['categoryId']?.errors?.['required']">Category ID is required.</span>
+    <input id="categoryId" formControlName="categoryId">
+    <div *ngIf="productForm.get('categoryId')?.invalid && (productForm.get('categoryId')?.dirty || productForm.get('categoryId')?.touched)">
+      <span *ngIf="productForm.get('categoryId')?.errors?.['required']">Category ID is required.</span>
     </div>
   </div>
 
-  <!-- Champ Price avec validation -->
   <div>
     <label for="price">Price:</label>
-    <input type="text" id="price" name="price" ngModel required pattern="^\d+(\.\d+)?$">
-    <div *ngIf="productForm.submitted && productForm.controls['price']?.invalid">
-      <span *ngIf="productForm.controls['price']?.errors?.['required']">Price is required.</span>
-      <span *ngIf="productForm.controls['price']?.errors?.['pattern']">Price must be a number.</span>
-    </div>
-  </div>
-<br>
-  <!-- Champ Promotion avec validation -->
-  <div>
-    <label for="promotion">Promotion:</label>
-    <input type="number" id="promotion" name="promotion" ngModel pattern="^(0|[1-9][0-9]?)$">
-    <div *ngIf="productForm.submitted && productForm.controls['promotion']?.invalid">
-      <span *ngIf="productForm.controls['promotion']?.errors?.['pattern']">Promotion must be a number less than or equal to 100.</span>
+    <input id="price" formControlName="price">
+    <div *ngIf="productForm.get('price')?.invalid && (productForm.get('price')?.dirty || productForm.get('price')?.touched)">
+      <span *ngIf="productForm.get('price')?.errors?.['required']">Price is required.</span>
+      <span *ngIf="productForm.get('price')?.errors?.['pattern']">Price must be a number.</span>
     </div>
   </div>
 
+  <div>
+    <label for="promotion">Promotion:</label>
+    <input id="promotion" formControlName="promotion">
+    <div *ngIf="productForm.get('promotion')?.invalid && (productForm.get('promotion')?.dirty || productForm.get('promotion')?.touched)">
+      <span *ngIf="productForm.get('promotion')?.errors?.['pattern']">Promotion must be a number less than or equal to 100.</span>
+    </div>
+  </div>
+
+  <div>
+    <label for="description">Description:</label>
+    <textarea id="description" formControlName="description"></textarea>
+  </div>
+
+  <div>
+    <label for="brand">Brand:</label>
+    <input id="brand" formControlName="brand">
+  </div>
+
+  <div> <label for="image">Image URL:</label> <input id="image" formControlName="image"> <div *ngIf="productForm.get('image')?.invalid && (productForm.get('image')?.dirty || productForm.get('image')?.touched)"> <span *ngIf="productForm.get('image')?.errors?.['required']">Image URL is required.</span> </div> </div>
   <button type="submit" [disabled]="productForm.invalid">Save</button>
 </form>
+<h2>Liste des Produits</h2> <ul> <li *ngFor="let product of list"> <strong>{{ product.name }}</strong> - {{ product.price | currency }} <br> <img [src]="product.image" alt="{{ product.name }}" width="100"> </li> </ul>
