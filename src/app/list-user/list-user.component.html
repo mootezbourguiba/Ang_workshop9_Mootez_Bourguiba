@@ -1,0 +1,7 @@
+<div *ngFor="let user of users">
+  <img [src]="user.picture" alt="{{user.firstName}} {{user.lastName}}">
+  <h3>{{user.firstName}} {{user.lastName}}</h3>
+  <p>Email: {{user.email}}</p>
+  <p>Profession: {{user.profession}}</p>
+</div>
+<button (click)="calculateUsers()">Calculer</button>

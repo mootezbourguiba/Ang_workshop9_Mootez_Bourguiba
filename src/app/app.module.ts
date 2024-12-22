@@ -12,10 +12,12 @@ import { FooterComponent } from './footer/footer.component';
 <<<<<<< HEAD
 import { FormProductComponent } from './form-product/form-product.component';
 import { CardComponent } from './card/card.component';
+import { ListUserComponent } from './list-user/list-user.component';
 
 @NgModule({
   declarations: [
-    CardComponent
+    CardComponent,
+    ListUserComponent
   ], // Vide car tous les composants sont standalone
   imports: [
     BrowserModule,
