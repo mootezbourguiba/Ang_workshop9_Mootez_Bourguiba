@@ -1,0 +1,15 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-4" *ngFor="let product of listProducts" style="margin-bottom: 20px;">
+      <app-card
+        [id]="product.id"
+        [image]="product.image"
+        [title]="product.title"
+        [description]="product.description"
+        [available]="product.promotion"
+        btnText="Add to shortlist"
+        (addShortList)="onAddShortList($event)">
+      </app-card>
+    </div>
+  </div>
+</div>

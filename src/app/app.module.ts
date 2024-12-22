@@ -11,9 +11,12 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 <<<<<<< HEAD
 import { FormProductComponent } from './form-product/form-product.component';
+import { CardComponent } from './card/card.component';
 
 @NgModule({
-  declarations: [], // Vide car tous les composants sont standalone
+  declarations: [
+    CardComponent
+  ], // Vide car tous les composants sont standalone
   imports: [
     BrowserModule,
     AppRoutingModule,
